@@ -231,7 +231,6 @@ class HP12C {
     executeFunction(func) {
         switch(func) {
             // f functions (orange)
-            case 'y^x':
             case 'yˣ':
                 this.power();
                 break;
@@ -247,7 +246,6 @@ class HP12C {
             case 'LN':
                 this.naturalLog();
                 break;
-            case 'e^x':
             case 'eˣ':
                 this.exponential();
                 break;
@@ -268,7 +266,6 @@ class HP12C {
                 this.integerPart();
                 break;
             case 'FRAC':
-            case 'Frac':
                 this.fractionalPart();
                 break;
             case '12×':
