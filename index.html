@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HP 12C Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="calculator">
+        <div class="logo">HP 12C</div>
+        
+        <div class="display-container">
+            <div class="display">
+                <div class="stack-indicators">
+                    <span class="stack-label">T:</span>
+                    <span id="stack-t">0</span>
+                    <span class="stack-label">Z:</span>
+                    <span id="stack-z">0</span>
+                    <span class="stack-label">Y:</span>
+                    <span id="stack-y">0</span>
+                </div>
+                <div class="main-display">
+                    <span class="mode-indicator" id="mode-indicator"></span>
+                    <span id="display">0</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="buttons">
+            <!-- Row 1 -->
+            <button class="btn" data-key="n" data-f="AMORT" data-g="12×">
+                <span class="f-label">AMORT</span>
+                <span class="primary">n</span>
+                <span class="g-label">12×</span>
+            </button>
+            <button class="btn" data-key="i" data-f="INT" data-g="12÷">
+                <span class="f-label">INT</span>
+                <span class="primary">i</span>
+                <span class="g-label">12÷</span>
+            </button>
+            <button class="btn" data-key="PV" data-f="NPV" data-g="CFo">
+                <span class="f-label">NPV</span>
+                <span class="primary">PV</span>
+                <span class="g-label">CF<sub>o</sub></span>
+            </button>
+            <button class="btn" data-key="PMT" data-f="RND" data-g="CFj">
+                <span class="f-label">RND</span>
+                <span class="primary">PMT</span>
+                <span class="g-label">CF<sub>j</sub></span>
+            </button>
+            <button class="btn" data-key="FV" data-f="IRR" data-g="Nj">
+                <span class="f-label">IRR</span>
+                <span class="primary">FV</span>
+                <span class="g-label">N<sub>j</sub></span>
+            </button>
+            
+            <!-- Row 2 -->
+            <button class="btn" data-key="CHS" data-f="DATE" data-g="D.MY">
+                <span class="f-label">DATE</span>
+                <span class="primary">CHS</span>
+                <span class="g-label">D.MY</span>
+            </button>
+            <button class="btn num" data-key="7" data-f="PRICE" data-g="BEG">
+                <span class="f-label">PRICE</span>
+                <span class="primary">7</span>
+                <span class="g-label">BEG</span>
+            </button>
+            <button class="btn num" data-key="8" data-f="YTM" data-g="END">
+                <span class="f-label">YTM</span>
+                <span class="primary">8</span>
+                <span class="g-label">END</span>
+            </button>
+            <button class="btn num" data-key="9" data-f="SL" data-g="MEM">
+                <span class="f-label">SL</span>
+                <span class="primary">9</span>
+                <span class="g-label">MEM</span>
+            </button>
+            <button class="btn" data-key="÷" data-f="SOYD" data-g="Frac">
+                <span class="f-label">SOYD</span>
+                <span class="primary">÷</span>
+                <span class="g-label">FRAC</span>
+            </button>
+            
+            <!-- Row 3 -->
+            <button class="btn" data-key="R↓" data-f="x⇌y" data-g="CLΣ">
+                <span class="f-label">x⇌y</span>
+                <span class="primary">R↓</span>
+                <span class="g-label">CLΣ</span>
+            </button>
+            <button class="btn num" data-key="4" data-f="DB" data-g="Σ+">
+                <span class="f-label">DB</span>
+                <span class="primary">4</span>
+                <span class="g-label">Σ+</span>
+            </button>
+            <button class="btn num" data-key="5" data-f="FIN" data-g="Σ-">
+                <span class="f-label">FIN</span>
+                <span class="primary">5</span>
+                <span class="g-label">Σ-</span>
+            </button>
+            <button class="btn num" data-key="6" data-f="STO" data-g="RCL">
+                <span class="f-label">STO</span>
+                <span class="primary">6</span>
+                <span class="g-label">RCL</span>
+            </button>
+            <button class="btn" data-key="×" data-f="IRR" data-g="Int">
+                <span class="f-label"></span>
+                <span class="primary">×</span>
+                <span class="g-label">INT</span>
+            </button>
+            
+            <!-- Row 4 -->
+            <button class="btn" data-key="SST" data-f="BST" data-g="P/R">
+                <span class="f-label">BST</span>
+                <span class="primary">SST</span>
+                <span class="g-label">P/R</span>
+            </button>
+            <button class="btn num" data-key="1" data-f="y^x" data-g="x≤y">
+                <span class="f-label">y<sup>x</sup></span>
+                <span class="primary">1</span>
+                <span class="g-label">x≤y</span>
+            </button>
+            <button class="btn num" data-key="2" data-f="1/x" data-g="x=0">
+                <span class="f-label">1/x</span>
+                <span class="primary">2</span>
+                <span class="g-label">x=0</span>
+            </button>
+            <button class="btn num" data-key="3" data-f="%" data-g="Δ%">
+                <span class="f-label">%</span>
+                <span class="primary">3</span>
+                <span class="g-label">Δ%</span>
+            </button>
+            <button class="btn" data-key="-" data-f="" data-g="x̄">
+                <span class="f-label"></span>
+                <span class="primary">−</span>
+                <span class="g-label">x̄</span>
+            </button>
+            
+            <!-- Row 5 -->
+            <button class="btn on-btn" data-key="ON" data-f="" data-g="">
+                <span class="f-label"></span>
+                <span class="primary">ON</span>
+                <span class="g-label"></span>
+            </button>
+            <button class="btn num" data-key="0" data-f="x!" data-g="x̄,r">
+                <span class="f-label">x!</span>
+                <span class="primary">0</span>
+                <span class="g-label">x̄,r</span>
+            </button>
+            <button class="btn num" data-key="." data-f="√x" data-g="s">
+                <span class="f-label">√x</span>
+                <span class="primary">.</span>
+                <span class="g-label">s</span>
+            </button>
+            <button class="btn" data-key="Σ+" data-f="LN" data-g="L.R.">
+                <span class="f-label">LN</span>
+                <span class="primary">Σ+</span>
+                <span class="g-label">L.R.</span>
+            </button>
+            <button class="btn" data-key="+" data-f="e^x" data-g="ŷ,r">
+                <span class="f-label">e<sup>x</sup></span>
+                <span class="primary">+</span>
+                <span class="g-label">ŷ,r</span>
+            </button>
+            
+            <!-- Row 6 -->
+            <button class="btn f-btn" data-key="f">
+                <span class="primary">f</span>
+            </button>
+            <button class="btn g-btn" data-key="g">
+                <span class="primary">g</span>
+            </button>
+            <button class="btn" data-key="STO" data-f="" data-g="">
+                <span class="f-label"></span>
+                <span class="primary">STO</span>
+                <span class="g-label"></span>
+            </button>
+            <button class="btn" data-key="RCL" data-f="" data-g="">
+                <span class="f-label"></span>
+                <span class="primary">RCL</span>
+                <span class="g-label"></span>
+            </button>
+            <button class="btn enter-btn" data-key="ENTER" rowspan="2">
+                <span class="primary">ENTER</span>
+            </button>
+            
+            <!-- Row 7 -->
+            <button class="btn" data-key="EEX" data-f="x≤y" data-g="GTO">
+                <span class="f-label">x≤y</span>
+                <span class="primary">EEX</span>
+                <span class="g-label">GTO</span>
+            </button>
+            <button class="btn" data-key="CLx" data-f="Σ" data-g="x²">
+                <span class="f-label">Σ</span>
+                <span class="primary">CLx</span>
+                <span class="g-label">x²</span>
+            </button>
+            <button class="btn prefix" data-key="PREFIX" data-f="" data-g="">
+                <span class="f-label"></span>
+                <span class="primary">⟵</span>
+                <span class="g-label"></span>
+            </button>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
