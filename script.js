@@ -318,8 +318,8 @@ class HP12C {
     }
     
     pressEnter() {
-        this.pushStack();
         this.stack.x = parseFloat(this.display) || 0;
+        this.pushStack();
         this.newNumber = true;
         this.entering = false;
         this.decimalEntered = false;
