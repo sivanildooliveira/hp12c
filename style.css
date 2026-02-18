@@ -1,0 +1,367 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.calculator {
+    background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    max-width: 400px;
+    width: 100%;
+}
+
+.logo {
+    color: #c9a961;
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 15px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    font-family: 'Courier New', monospace;
+    letter-spacing: 3px;
+}
+
+.display-container {
+    background: linear-gradient(135deg, #4a5f3f, #3a4f2f);
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 20px;
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.6),
+                0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.display {
+    font-family: 'Courier New', monospace;
+    color: #9bbc7a;
+    text-align: right;
+}
+
+.stack-indicators {
+    font-size: 10px;
+    margin-bottom: 6px;
+    display: grid;
+    grid-template-columns: auto 1fr auto 1fr auto 1fr;
+    gap: 5px;
+    opacity: 0.8;
+}
+
+.stack-label {
+    font-weight: bold;
+}
+
+.main-display {
+    font-size: 32px;
+    font-weight: bold;
+    padding: 5px 0;
+    min-height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.mode-indicator {
+    font-size: 14px;
+    color: #ff9500;
+    font-weight: bold;
+    margin-right: auto;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+}
+
+.btn {
+    background: linear-gradient(145deg, #4a4a4a, #3a3a3a);
+    border: none;
+    border-radius: 8px;
+    padding: 12px 8px;
+    cursor: pointer;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    transition: all 0.1s;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 50px;
+}
+
+.btn:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(0, 0, 0, 0.2);
+}
+
+.btn .f-label {
+    position: absolute;
+    top: 3px;
+    font-size: 9px;
+    color: #ff9500;
+    font-weight: normal;
+}
+
+.btn .primary {
+    font-size: 14px;
+    color: white;
+}
+
+.btn .g-label {
+    position: absolute;
+    bottom: 3px;
+    font-size: 9px;
+    color: #4a9eff;
+    font-weight: normal;
+}
+
+/* Number buttons */
+.btn.num {
+    background: linear-gradient(145deg, #6a6050, #5a5040);
+}
+
+/* Operation buttons */
+.btn[data-key="÷"],
+.btn[data-key="×"],
+.btn[data-key="-"],
+.btn[data-key="+"] {
+    background: linear-gradient(145deg, #5a5a5a, #4a4a4a);
+}
+
+/* f button */
+.btn.f-btn {
+    background: linear-gradient(145deg, #ff9500, #e88500);
+}
+
+/* g button */
+.btn.g-btn {
+    background: linear-gradient(145deg, #4a9eff, #3a8eef);
+}
+
+/* ON button */
+.btn.on-btn {
+    background: linear-gradient(145deg, #5a4a4a, #4a3a3a);
+}
+
+/* ENTER button */
+.btn.enter-btn {
+    grid-column: 5;
+    grid-row: 6 / 8;
+    min-height: 108px;
+    background: linear-gradient(145deg, #5a5a5a, #4a4a4a);
+    font-size: 16px;
+}
+
+/* Active states for f and g modes */
+.btn.f-active {
+    background: linear-gradient(145deg, #ff9500, #e88500);
+    animation: pulse 0.5s ease-in-out;
+}
+
+.btn.g-active {
+    background: linear-gradient(145deg, #4a9eff, #3a8eef);
+    animation: pulse 0.5s ease-in-out;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+/* Desktop layout */
+@media (min-width: 768px) {
+    .calculator {
+        max-width: 400px;
+    }
+    
+    .logo {
+        font-size: 28px;
+    }
+    
+    .main-display {
+        font-size: 32px;
+    }
+}
+
+/* Mobile portrait - fit everything on screen */
+@media (max-width: 767px) and (orientation: portrait) {
+    body {
+        padding: 10px;
+        align-items: flex-start;
+    }
+    
+    .calculator {
+        padding: 15px;
+        max-width: 100%;
+        width: 100%;
+        border-radius: 15px;
+    }
+    
+    .logo {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+    
+    .display-container {
+        padding: 8px;
+        margin-bottom: 10px;
+    }
+    
+    .stack-indicators {
+        font-size: 8px;
+        gap: 3px;
+    }
+    
+    .main-display {
+        font-size: 24px;
+        min-height: 32px;
+    }
+    
+    .buttons {
+        gap: 5px;
+    }
+    
+    .btn {
+        padding: 8px 4px;
+        min-height: 42px;
+        border-radius: 6px;
+    }
+    
+    .btn .f-label {
+        font-size: 7px;
+        top: 2px;
+    }
+    
+    .btn .primary {
+        font-size: 12px;
+    }
+    
+    .btn .g-label {
+        font-size: 7px;
+        bottom: 2px;
+    }
+    
+    .btn.enter-btn {
+        min-height: 89px;
+        font-size: 14px;
+    }
+}
+
+/* Mobile landscape - wider layout */
+@media (max-width: 950px) and (orientation: landscape) {
+    body {
+        padding: 10px;
+    }
+    
+    .calculator {
+        max-width: 600px;
+        padding: 15px;
+    }
+    
+    .logo {
+        font-size: 22px;
+        margin-bottom: 10px;
+    }
+    
+    .display-container {
+        padding: 10px;
+        margin-bottom: 12px;
+    }
+    
+    .main-display {
+        font-size: 28px;
+    }
+    
+    .buttons {
+        gap: 6px;
+    }
+    
+    .btn {
+        padding: 10px 6px;
+        min-height: 45px;
+    }
+    
+    .btn .f-label {
+        font-size: 8px;
+    }
+    
+    .btn .primary {
+        font-size: 13px;
+    }
+    
+    .btn .g-label {
+        font-size: 8px;
+    }
+    
+    .btn.enter-btn {
+        min-height: 96px;
+    }
+}
+
+/* Very small screens - make everything even more compact */
+@media (max-height: 600px) and (orientation: portrait) {
+    .calculator {
+        padding: 10px;
+    }
+    
+    .logo {
+        font-size: 16px;
+        margin-bottom: 6px;
+    }
+    
+    .display-container {
+        padding: 6px;
+        margin-bottom: 8px;
+    }
+    
+    .main-display {
+        font-size: 20px;
+        min-height: 26px;
+    }
+    
+    .buttons {
+        gap: 4px;
+    }
+    
+    .btn {
+        padding: 6px 3px;
+        min-height: 36px;
+        border-radius: 4px;
+    }
+    
+    .btn .f-label {
+        font-size: 6px;
+    }
+    
+    .btn .primary {
+        font-size: 10px;
+    }
+    
+    .btn .g-label {
+        font-size: 6px;
+    }
+    
+    .btn.enter-btn {
+        min-height: 76px;
+        font-size: 12px;
+    }
+}
